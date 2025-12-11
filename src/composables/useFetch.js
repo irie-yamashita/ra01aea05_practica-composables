@@ -1,34 +1,33 @@
 import { onMounted, ref } from "vue";
 
+export function useFetch(url) {
+  const data = ref(null);
+  const error = ref(null);
+  const loading = ref(false);
 
-export function useFetch (url) {
+  const fetchData = async () => {
+    // reiniciem valors
+    loading.value = true;
+    error.value = null;
 
-    const data = ref(null);
-    const error = ref(null);
-    const loading = ref(false);
+    try {
+      const res = await fetch(url.value || url);
 
-    const fetchData = async () => {
-        
-        // reiniciem valors
-        loading.value = true;
-        error.value = null;
+      // console.log(res);
 
-        try {
-            const res = await fetch(url.value);
-            if(!res.ok) {
-                throw new Error(`Error en fer la petició: ${res.status}`);
-            }
-            data.value = await res.json();
-
-        } catch (err) {
-            error.value = err.message;
-        } finally {
-            loading.value = false;
-        }
-
+      if (!res.ok) {
+        throw new Error(`Error en fer la petició: ${res.status}`);
+      }
+      console.log("meal", res);
+      data.value = await res.json();
+    } catch (err) {
+      error.value = err.message;
+    } finally {
+      loading.value = false;
     }
+  };
 
-    onMounted(fetchData);
+  onMounted(fetchData);
 
-    return { data, error, loading, fetchData} 
+  return { data, error, loading, fetchData };
 }

@@ -1,7 +1,7 @@
 <script setup>
 import { useFetch } from "@/composables/useFetch.js";
-import { RouterLink } from "vue-router";
 import { ref } from "vue";
+import MealCard from "@/components/MealCard.vue";
 
 const cerca = ref("chicken");
 const url = ref(
@@ -16,11 +16,16 @@ const { data, error, loading, fetchData } = useFetch(url);
   <div v-else-if="error">{{ error }}</div>
   <div v-else>
     <ul v-if="data && data.meals">
-      <li v-for="meal in data.meals" :key="meal.idMeal">
-        <h3>{{ meal.strMeal }}</h3>
-        <p>{{ meal.strArea }} - {{ meal.strCategory }}</p>
-        <router-link :to="{ name: 'Meal', params: { idMeal: meal.idMeal } }">Recepta</router-link>
-      </li>
+      <meal-card v-for="meal in data.meals" :key="meal.idMeal" :data="data" />
     </ul>
   </div>
 </template>
+
+<style scoped>
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    gap: 30px;
+  }
+</style>
