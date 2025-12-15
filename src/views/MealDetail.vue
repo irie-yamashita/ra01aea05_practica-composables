@@ -18,6 +18,8 @@ watch(
     fetchData(newId);
   }
 );
+
+
 </script>
 
 <template>

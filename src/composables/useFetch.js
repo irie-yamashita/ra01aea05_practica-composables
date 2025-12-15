@@ -18,7 +18,7 @@ export function useFetch(url) {
       if (!res.ok) {
         throw new Error(`Error en fer la petició: ${res.status}`);
       }
-      console.log("meal", res);
+      // console.log("meal", res);
       data.value = await res.json();
     } catch (err) {
       error.value = err.message;
