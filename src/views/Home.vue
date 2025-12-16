@@ -4,7 +4,7 @@ import { ref, watch } from "vue";
 import MealCard from "@/components/MealCard.vue";
 import SearchBar from "@/components/SearchBar.vue";
 
-const cerca = ref("chicken");
+const cerca = ref("veg");
 const url = ref(
   `https://www.themealdb.com/api/json/v1/1/search.php?s=${cerca.value}`
 );
@@ -25,6 +25,7 @@ watch(
   },
 );
 
+console.log(url.value)
 
 </script>
 
@@ -35,7 +36,7 @@ watch(
   <div v-else-if="error">{{ error }}</div>
   <div v-else>
     <ul v-if="data && data.meals">
-      <meal-card v-for="meal in data.meals" :key="meal.idMeal" :data="data" />
+      <meal-card v-for="meal in data.meals" :key="meal.idMeal" :meal="meal" />
     </ul>
     <p v-else class="info-message">
       NO HI HA RECEPTES AMB '{{ cerca }}' :/
@@ -46,8 +47,7 @@ watch(
 <style scoped>
   ul {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
   }
 
@@ -55,5 +55,6 @@ watch(
     margin-top: 20px;
     font-weight: bold;
     text-align: center;
+    color: #d9d2b0;
   }
 </style>

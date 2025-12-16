@@ -8,7 +8,7 @@ import NavigationBar from './components/NavigationBar.vue';
 
   <main>
     <header>
-      <h1>The Real Meal</h1>
+      <h1>Meals DB</h1>
       <navigation-bar></navigation-bar>
     </header>
     <router-view></router-view>
@@ -18,7 +18,7 @@ import NavigationBar from './components/NavigationBar.vue';
 <style scoped>
 
   h1 {
-    color: #403128;
+    color: #d9d2b0;
   }
 
   main {
@@ -27,6 +27,8 @@ import NavigationBar from './components/NavigationBar.vue';
     gap: 20px;
 
     padding-top: 50px;
+    padding-bottom: 50px;
+
   }
 
   header {

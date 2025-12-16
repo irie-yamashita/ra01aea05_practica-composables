@@ -8,6 +8,7 @@ const emit = defineEmits(['search-recipe']);
 
 const searchRecipe = () => {
     emit('search-recipe', q.value);
+    q.value = '';
 };
 
 </script>
@@ -32,19 +33,19 @@ const searchRecipe = () => {
 
 input {
     border-bottom: 1px solid #403128;
-    color: whitesmoke;
+    color: #d9d2b0;
     
     padding: 5px 10px;
 }
 
 input:focus-visible {
-    background-color: rgb(255,255,255, 0.2);
+    background-color: rgba(255, 255, 255, 0.212);
     outline: none;
 
 }
 
 button {
-    background-color: #403128;
+    background-color: #d9d2b0;
     padding: 5px 20px;
     border-radius: 4px;
 

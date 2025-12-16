@@ -32,12 +32,14 @@ watch(
   </div>
   <div v-else>
     <div v-if="data && data.meals && Array.isArray(data.meals)">
-      <h1>{{ data.meals[0].strMeal }}</h1>
       <div class="meal-container">
         <img :src="data.meals[0].strMealThumb" :alt="data.meals[0].strMeal" />
         <div class="info-container">
-          <h2>Instruccions</h2>
-          <p>{{ data.meals[0].strInstructions }}</p>
+          <h1>{{ data.meals[0].strMeal }}</h1>
+          <section class="instructions-section">
+            <h2>Instruccions</h2>
+            <p>{{ data.meals[0].strInstructions }}</p>
+          </section>
         </div>
       </div>
     </div>
@@ -50,7 +52,7 @@ watch(
 <style scoped>
 .meal-container {
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
 .meal-container img {
@@ -58,8 +60,31 @@ watch(
   object-fit: contain;
   border-radius: 8px;
 
+  box-shadow: 5px 5px 2px 0px #40312875;
+
+
 }
 
+
 .info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h1 {
+  color: #d9d2b0;
+  font-size: 26px;
+}
+
+.instructions-section {
+  background-color: #bdbc9b;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 </style>

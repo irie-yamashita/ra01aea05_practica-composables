@@ -3,14 +3,13 @@
 </script>
 
 <template>
-    <router-link :to="{name: 'Home'}" class="link">Home</router-link>
+    <router-link :to="{name: 'Home'}" class="link">< Home</router-link>
 </template>
 
 <style>
     .link {
         color: whitesmoke;
         text-decoration: none;
-
         font-size: 14px;
     }
 
